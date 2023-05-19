@@ -25,7 +25,7 @@ const start = () => {
     bot.on('message', async msg => {
         const text = msg.text
         const chatId = msg.chat.id
-        // bot.sendMessage(chatId, `Кластер запушил ${text}`)
+        // bot.sendMessage(chatId, `Ты написал ${text}`)
 
         if (text === "/start") {
             await bot.sendSticker(chatId, 'https://tlgrm.eu/_/stickers/1ee/7ff/1ee7ffd2-4a3e-385c-ab6b-f4c1137864c2/192/9.webp')
@@ -39,15 +39,8 @@ const start = () => {
 
         if (text === "/game") {
             return startGame(chatId)
-            // if (randomNumber === text) {
-            //     return bot.sendMessage(chatId, "Ахуеть ты пидРФЧМ говно силинкшот в могилу, угадал((((((")
-            // } else if (randomNumber !== text) {
-            //     return bot.sendMessage(chatId, "ЛОХ МИМО(((")
-            // }
-                
-            
         }
-        return bot.sendMessage(chatId, 'Ты даун, я не понимаю что ты несешь((())("ОП(')
+        return bot.sendMessage(chatId, 'Не понимаю вас')
     })
 
     bot.on("callback_query", async msg => {
@@ -58,9 +51,9 @@ const start = () => {
         }
 
         if (data === chats[chatId]) {
-            return bot.sendMessage(chatId, `Ебатьа чтотоиотсчтоо ты отгадал цифру ${chats[chatId]}`, againOptions)
+            return bot.sendMessage(chatId, `Ты отгадал, число ${chats[chatId]}`, againOptions)
         } else { 
-            return bot.sendMessage(chatId, `ЛОх тупой, не угадал, цифра была ${chats[chatId]}`, againOptions)
+            return bot.sendMessage(chatId, `Не отгадал, число было ${chats[chatId]}`, againOptions)
         } 
     })
 }
